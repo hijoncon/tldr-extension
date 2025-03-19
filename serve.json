@@ -1,0 +1,8 @@
+{
+  "ssl": {
+    "cert": "./localhost.pem",
+    "key": "./localhost-key.pem"
+  },
+  "public": "build",
+  "port": 5000
+}
