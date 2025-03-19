@@ -12,12 +12,10 @@ export interface Highlight {
   shrugCount?: number;
 }
 
-export const getHighlights = async (
-  id: string
-): Promise<Highlight[]> => {
+export const getHighlights = async (id: string): Promise<Highlight[]> => {
   try {
-    const endpoint = process.env.REACT_APP_TLDR_ENDPOINT;
-    const url = `${endpoint}/highlights/${id.toLowerCase()}`;
+    const endpoint = "https://e0466af0aab7.ngrok.app";
+    const url = `${endpoint}/stream/clips/channel/${id.toLowerCase()}`;
     const response = await fetch(url);
     const highlights = await response.json();
     return highlights;
@@ -27,11 +25,9 @@ export const getHighlights = async (
   return [];
 };
 
-export const verifyUser = async (
-  channelName: string
-) : Promise<Boolean> => {
+export const verifyUser = async (channelName: string): Promise<Boolean> => {
   try {
-    const endpoint = process.env.REACT_APP_TLDR_ENDPOINT;
+    const endpoint = "https://e0466af0aab7.ngrok.app";
     const url = `${endpoint}/user/verify/${channelName}`;
     const response = await fetch(url);
     const user = await response.json();
@@ -40,7 +36,7 @@ export const verifyUser = async (
     }
     return false;
   } catch (err) {
-    console.error(`Failed to get user for ${channelName} due to ${err}`)
+    console.error(`Failed to get user for ${channelName} due to ${err}`);
   }
   return false;
-}
+};

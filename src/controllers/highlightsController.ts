@@ -9,10 +9,10 @@ export interface HighlightsParam {
 export const getProcessedHighlights = async ({
   game,
   channelId,
-  startedAt
+  startedAt,
 }: HighlightsParam): Promise<Highlight[]> => {
   try {
-    const endpoint = process.env.REACT_APP_TLDR_ENDPOINT;
+    const endpoint = "https://e0466af0aab7.ngrok.app";
     const highlights = await getHighlights(channelId);
     const result: Highlight[] = highlights.map((highlight: any) => {
       return {
